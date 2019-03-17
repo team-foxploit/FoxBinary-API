@@ -30,6 +30,7 @@
 
 from flask import render_template
 import connexion
+import os
 
 # Create the application instance
 app = connexion.App(__name__, specification_dir='./')
@@ -50,3 +51,4 @@ def home():
 # If we're running in stand alone mode, run the application
 if __name__ == '__main__':
     app.run(debug=True, port=33507)
+    # print(os.environ.get('port'))

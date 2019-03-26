@@ -20,6 +20,7 @@ while True:
         full_msg += msg
 
         if (len(full_msg) - HEADER_SIZE) == msg_len:
+            
             # print("Full msg revieved.")
             # print(full_msg[HEADER_SIZE:])
 

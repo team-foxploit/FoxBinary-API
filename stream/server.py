@@ -21,13 +21,12 @@ def on_message(ws, message):
     #     "name": "Kamal",
     #     "email": "kamal@yahoo.com"
     # }
+    
     msg = pickle.dumps(message)
-    # print(msg)
     msg = bytes(f'{len(msg):<{HEADER_SIZE}}', "utf-8") + msg
     clientSocket.send(msg)
+
     # y = json.loads(message)
-    # print(y)
-    # return [message[key] for key in sorted(message.keys())]
 
 
 while True:
@@ -37,6 +36,7 @@ while True:
     apiUrl = "wss://ws.binaryws.com/websockets/v3?app_id=1089"
     ws = websocket.WebSocketApp(apiUrl, on_message = on_message, on_open = on_open)
     ws.run_forever()
+
     # welcome_msg = "Welcome to the server!"
     # data = {
     #     "name": "Kamal",

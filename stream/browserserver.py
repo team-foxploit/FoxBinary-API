@@ -25,6 +25,7 @@ import websocket
 from websocket import create_connection
 import json
 
+
 y = {}
 
 def on_open(ws):

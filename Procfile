@@ -1,1 +1,1 @@
-web: python foxbinaryapi_manager/manage.py runserver
+web: gunicorn foxbinaryapi_manager/foxbinaryapi_manager.wsgi --log-file -

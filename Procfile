@@ -1,1 +1,1 @@
-web: gunicorn foxbinaryapi_manager/foxbinaryapi_manager.wsgi --log-file -
+web: gunicorn foxbinaryapi_manager.wsgi --log-file -

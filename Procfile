@@ -1,1 +1,0 @@
-web: gunicorn foxbinaryapi_manager.wsgi --log-file -

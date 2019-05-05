@@ -1,6 +1,6 @@
-from foxbinaryapi.models import TickHistory, BlogPost
+from foxbinaryapi.models import TickHistory, BlogPost, APIToken
 from rest_framework import viewsets, permissions
-from .serializers import TickHistorySerializer, BlogPostSerializer
+from .serializers import TickHistorySerializer, BlogPostSerializer, APITokenSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import action
 
@@ -23,3 +23,16 @@ class BlogPostViewSet(viewsets.ModelViewSet):
     def get(self, request, *args, **kwargs):
         print(request)
         return Response("LOL")
+
+class APITokenViewSet(viewsets.ModelViewSet):
+    ermission_classes = [
+        permissions.IsAuthenticated
+    ]
+
+    serializer_class = APITokenSerializer
+
+    def get_queryset(self):
+        return self.request.user.api_tokens.all()
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)

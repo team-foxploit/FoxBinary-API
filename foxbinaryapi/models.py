@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.conf import settings
 
 # Create your models here.
@@ -17,4 +18,14 @@ class BlogPost(models.Model):
 
     def __str__(self):
         return str(self.user.username)
+
+# API token model
+class APIToken(models.Model):
+    token = models.CharField(max_length=500)
+    owner = models.ForeignKey(User,
+                              default=1,
+                              related_name="api_tokens",
+                              on_delete=models.CASCADE)
+
+    created_at = models.DateTimeField(auto_now_add=True)
     

@@ -1,1 +1,1 @@
-web: python server.py
+web: gunicorn foxbinaryapi_manager.wsgi
